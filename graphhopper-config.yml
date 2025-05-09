@@ -1,0 +1,78 @@
+graphhopper:
+  datareader.file: /data/input.osm.pbf
+  graph.location: /data/graph-cache
+  graph.encoded_values: |
+    car_access, car_average_speed,
+    foot_access, foot_priority, foot_average_speed, hike_rating,
+    bike_priority, bike_access, bike_average_speed, mtb_rating,
+    average_slope, road_access, roundabout,
+  graph.elevation.provider: srtm
+
+  profiles:
+   - name: car
+#     turn_costs:
+#       vehicle_types: [motorcar, motor_vehicle]
+#       u_turn_costs: 60
+#     for more advanced turn costs, see #2957 or bike_tc.yml
+     custom_model_files: [car.json]
+
+   - name: foot
+     custom_model_files: [foot.json, foot_elevation.json]
+   - name: bike
+     custom_model_files: [bike.json, bike_elevation.json]
+
+# TODO for now without CH to make import faster
+#  profiles_ch:
+#    - profile: car
+#    - profile: bike
+#    - profile: foot
+
+  prepare.ch.threads: 1
+  
+  prepare.min_network_size: 200
+  prepare.subnetworks.threads: 1
+
+  routing.snap_preventions_default: tunnel, bridge, ferry
+
+  routing.non_ch.max_waypoint_distance: 1000000
+
+  import.osm.ignored_highways: ''
+
+# Dropwizard server configuration
+server:
+  application_connectors:
+  - type: http
+    port: 8989
+    # for security reasons bind to localhost
+    bind_host: localhost
+    # increase GET request limit - not necessary if /maps UI is not used or used without custom models
+    max_request_header_size: 50k
+  request_log:
+      appenders: []
+  admin_connectors:
+  - type: http
+    port: 8990
+    bind_host: localhost
+# See https://www.dropwizard.io/en/latest/manual/core.html#logging
+logging:
+  appenders:
+    - type: file
+      time_zone: UTC
+      current_log_filename: logs/graphhopper.log
+      log_format: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+      archive: true
+      archived_log_filename_pattern: ./logs/graphhopper-%d.log.gz
+      archived_file_count: 30
+      never_block: true
+    - type: console
+      time_zone: UTC
+      log_format: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  loggers:
+    "com.graphhopper.osm_warnings":
+      level: DEBUG
+      additive: false
+      appenders:
+        - type: file
+          currentLogFilename: logs/osm_warnings.log
+          archive: false
+          logFormat: '[%level] %msg%n'

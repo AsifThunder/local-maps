@@ -1,0 +1,45 @@
+services:
+  planetiler:
+    build: .
+    entrypoint: ["/scripts/run-planetiler.sh"]
+    environment:
+      - PBF_URL=${PBF_URL}
+    volumes:
+      - ./data:/data
+    restart: "no"
+    
+  tileserver:
+    image: maptiler/tileserver-gl
+    container_name: tileserver
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    command: -p 8080
+    depends_on:
+      - planetiler
+      
+  graphhopper:
+    build: .
+    entrypoint: ["/scripts/run-graphhopper.sh"]
+    environment:
+      - PBF_URL=${PBF_URL}
+    volumes:
+      - ./data:/data
+      - ./graphhopper-config.yml:/app/graphhopper/config.yml
+    ports:
+      - "8989:8989"
+
+  photon:
+    build: .
+    entrypoint: ["/scripts/run-photon.sh"]
+    environment:
+      - PHOTON_DB=${PHOTON_DB}
+    volumes:
+      - ./data:/data
+    ports:
+      - "2322:2322"
+
+networks:
+  default:
+    driver: bridge
