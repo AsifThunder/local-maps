@@ -15,7 +15,4 @@ else
 fi
 
 # Run planetiler if --force is specified it will overwrite the data
-java -Xmx4g -jar /app/planetiler/planetiler.jar \
-  --download \ 
-  --pbf /data/input.osm.pbf \
-  --output /data/tiles.mbtiles
+java -Xmx4g -jar /app/planetiler/planetiler.jar --download --osm_path=/data/input.osm.pbf --output=/data/tiles.mbtiles

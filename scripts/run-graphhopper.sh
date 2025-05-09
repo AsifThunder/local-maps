@@ -5,7 +5,7 @@ echo "Running GraphHopper import (if needed)..."
 
 if [ ! -d /data/graph-cache ]; then
   java -Xmx4g -Xms4g \
-    -Ddw.graphhopper.datareader.file="${PBF_URL}" \
+    -Ddw.graphhopper.datareader.file=/data/input.osm.pbf \
     -Ddw.graphhopper.graph.location=/data/graph-cache \
     -jar /app/graphhopper/graphhopper-web.jar import /app/graphhopper/config.yml
 fi

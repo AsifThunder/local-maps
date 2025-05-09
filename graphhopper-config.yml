@@ -3,9 +3,9 @@ graphhopper:
   graph.location: /data/graph-cache
   graph.encoded_values: |
     car_access, car_average_speed,
-    foot_access, foot_priority, foot_average_speed, hike_rating,
-    bike_priority, bike_access, bike_average_speed, mtb_rating,
-    average_slope, road_access, roundabout,
+    foot_access, foot_priority, foot_average_speed, foot_network, hike_rating,
+    bike_priority, bike_access, bike_average_speed, bike_network, mtb_rating, get_off_bike,
+    average_slope, road_access, roundabout, surface, toll, track_type, country, max_speed, road_class, road_environment,
   graph.elevation.provider: srtm
 
   profiles:
@@ -43,8 +43,9 @@ server:
   application_connectors:
   - type: http
     port: 8989
-    # for security reasons bind to localhost
-    bind_host: localhost
+    # TODO NOW for security reasons bind to localhost but currently required for docker (limited knowledge)
+    # bind_host: localhost
+
     # increase GET request limit - not necessary if /maps UI is not used or used without custom models
     max_request_header_size: 50k
   request_log:

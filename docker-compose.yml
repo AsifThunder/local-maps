@@ -10,14 +10,14 @@ services:
     
   tileserver:
     image: maptiler/tileserver-gl
-    container_name: tileserver
     ports:
-      - "8080:8080"
+      - "7070:7070"
     volumes:
       - ./data:/data
-    command: -p 8080
-    depends_on:
-      - planetiler
+    command: -p 7070
+# TODO NOW how to start after planetiler is finished
+#    depends_on:
+#      - planetiler
       
   graphhopper:
     build: .
