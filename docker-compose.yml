@@ -15,20 +15,23 @@ services:
       - "7070:7070"
     volumes:
       - ./data:/data
-    command: -p 7070
-# TODO NOW how to start after planetiler is finished
-#    depends_on:
-#      - planetiler
+      - ./wait_for.sh:/wait_for.sh:ro
+    command: ["/bin/sh", "-c", "/wait_for.sh planetiler finished && tileserver-gl -p 7070"]
+    depends_on:
+      - planetiler
 
   graphhopper:
     build:
       context: ./graphhopper
-    entrypoint: ["/run.sh"]
+    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh planetiler starting && /run.sh"]
     volumes:
       - ./data:/data
-      - ./graphhopper/config.yml:/app/graphhopper/config.yml
+      - ./wait_for.sh:/wait_for.sh:ro
     ports:
       - "8989:8989"
+    # waits for PBF import done by planetiler
+    depends_on:
+      - planetiler
 
   photon:
     build:
@@ -47,9 +50,10 @@ services:
   geocoder-converter:
     build:
       context: ./geocoder-converter
-    entrypoint: ["/run.sh"]
+    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh photon starting && /run.sh"]
     volumes:
-      - ./geocoder-converter/config.yml:/app/geocoder-converter/config.yml
+      - ./wait_for.sh:/wait_for.sh:ro
+      - ./data:/data # for status files
     ports:
       - "8080:8080"
     depends_on:

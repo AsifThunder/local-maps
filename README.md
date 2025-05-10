@@ -1,6 +1,6 @@
 # Overview
 
-mymaps where 'my' is in the sense of 'local'.
+Local Maps has it all locally.
 
 The web UI and the routing is from GraphHopper, the address search is from photon
 and the tiles are created by planetiler and served by tilesserver-gl.
