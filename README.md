@@ -1,6 +1,6 @@
 # Overview
 
-Local Maps has it all locally.
+Local Maps is an easy to use maps application which has it all the functionally locally.
 
 The web UI and the routing is from [GraphHopper](https://github.com/graphhopper/graphhopper), the address search
 is from [photon](https://github.com/komoot/photon/) and the tiles are created by 
@@ -15,7 +15,7 @@ is from [photon](https://github.com/komoot/photon/) and the tiles are created by
  * powered by OpenStreetMap data
  * maps shows different data along the route (elevation, road class, surface, ...)
  * alternative routes
- * with minor tweak navigation in maps possible
+ * navigation is possible via maplibre navigation SDK or ferrostar SDK
 
 [![GraphHopper Maps](./dev/screenshot.png)](https://graphhopper.com/maps)
 
@@ -39,7 +39,21 @@ parallel. You can reduce demand if you start them one by one using:
 
 Ensure that you consider the dependencies: `planetiler, tilerserver, graphhopper, photon, geocoder-converter, ui`.
 
+# Change Area
+
+You can change this in the .env file. Make sure that you bring down all
+services and remove the ./data folder before you call `docker compose up`
+again.
+
 # Development
+
+## Issues
+
+Pull requests are welcome. Please note that an issue of the underlying
+software should not be raised here. This project is around connecting
+existing maps software and making the entire stack easy to self-host.
+
+## Troubleshooting
 
 Start over:
 
@@ -57,6 +71,13 @@ use tileserver-gl-light this image uses over 440MB. Hopefully we can improve
 this as currently you need 1800MB for the 6 docker images alone. Plus size
 for the PBF and geocoding data (3GB on disk, Austria only). Plus the internal 
 data for graphhopper and planetiler (1GB on disk, Austria only).
+
+## Germany as an Example
+
+I needed to raise memory usage to `-Xmx6g` for GraphHopper import and running the
+service. No other changes were required. This can be avoided if you
+comment out the `profiles_ch` section in `graphhopper/config.yml` but then
+routing requests will be slower.
 
 # License
 
