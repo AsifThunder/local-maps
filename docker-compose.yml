@@ -10,13 +10,14 @@ services:
     restart: "no"
 
   tileserver:
-    image: maptiler/tileserver-gl
+    build:
+      context: ./tileserver
     ports:
       - "7070:7070"
     volumes:
       - ./data:/data
       - ./wait_for.sh:/wait_for.sh:ro
-    command: ["/bin/sh", "-c", "/wait_for.sh planetiler finished && tileserver-gl -p 7070"]
+    command: ["/bin/sh", "-c", "sh /wait_for.sh planetiler finished && tileserver-gl-light --config /config.json"]
     depends_on:
       - planetiler
 

@@ -1,0 +1,13 @@
+{
+  "options": {
+    "paths": {
+      "fonts": "fonts",
+      "styles": "styles"
+    }
+  },
+  "data": {
+    "openmaptiles": {
+      "mbtiles": "/data/tiles.mbtiles"
+    }
+  }
+}
