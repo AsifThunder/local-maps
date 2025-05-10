@@ -8,14 +8,12 @@ and the tiles are created by planetiler and served by tilesserver-gl.
 # Installation
 
 1. edit .env and use the data you want
-2. `source .env; mkdir -p data; wget "$PBF_URL" -O data/input.osm.pbf`
-3. `docker compose up --build`
-4. wait and ensure all services are properly started:
+2. `docker compose up --build`
+3. wait and ensure all services are properly started:
    a) planetiler should say "planetiler-1  ... Acknowledgments"
    b) GraphHopper should say "... INFO org.eclipse.jetty.server.Server - Started Server..."
    c) likely the last is photon and it should show "... de.komoot.photon.App - ES cluster is now ready"
-5. In another tab do: `cd ui; npm install; npm run serve`
-6. Now view GraphHopper Maps at http://localhost:3000
+4. View GraphHopper Maps at http://localhost:3000
 
 ## Troubleshooting
 

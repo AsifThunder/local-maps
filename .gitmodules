@@ -1,4 +1,1 @@
 
-[submodule "ui"]
-	path = ui
-	url = https://github.com/graphhopper/graphhopper-maps.git

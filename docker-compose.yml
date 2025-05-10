@@ -59,7 +59,19 @@ services:
       - "8080:8080"
     depends_on:
       - photon
-
+  
+  maps:
+    build:
+      context: ./maps
+    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh planetiler starting && npm run serve"]
+    volumes:
+      - ./wait_for.sh:/wait_for.sh
+      - ./data:/data # for status files
+    ports:
+      - "3000:3000"
+    depends_on:
+      - planetiler
+    
 networks:
   default:
     driver: bridge

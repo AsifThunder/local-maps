@@ -3,6 +3,7 @@ set -e
 
 mkdir -p /data
 
+# the following two echo's are executed when the script exits or errors
 # currently we only expect 'good' errors like IllegalArgumentException: file:///data/tiles.mbtiles already exists
 trap 'echo "finished" > /data/planetiler.status.txt' ERR
 trap 'echo "finished" > /data/planetiler.status.txt' EXIT
