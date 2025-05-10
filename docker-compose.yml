@@ -10,14 +10,14 @@ services:
     restart: "no"
 
   tileserver:
-    build:
-      context: ./tileserver
+    image: maptiler/tileserver-gl-light:latest
     ports:
-      - "7070:7070"
+      - "7070:8080"
     volumes:
       - ./data:/data
       - ./wait_for.sh:/wait_for.sh:ro
-    command: ["/bin/sh", "-c", "sh /wait_for.sh planetiler finished && tileserver-gl-light --config /config.json"]
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["sh /wait_for.sh planetiler finished && /usr/src/app/docker-entrypoint.sh"]
     depends_on:
       - planetiler
 
