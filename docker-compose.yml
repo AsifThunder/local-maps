@@ -1,13 +1,14 @@
 services:
   planetiler:
-    build: .
-    entrypoint: ["/scripts/run-planetiler.sh"]
+    build:
+      context: ./planetiler
+    entrypoint: ["/run.sh"]
     environment:
       - PBF_URL=${PBF_URL}
     volumes:
       - ./data:/data
     restart: "no"
-    
+
   tileserver:
     image: maptiler/tileserver-gl
     ports:
@@ -18,19 +19,21 @@ services:
 # TODO NOW how to start after planetiler is finished
 #    depends_on:
 #      - planetiler
-      
+
   graphhopper:
-    build: .
-    entrypoint: ["/scripts/run-graphhopper.sh"]
+    build:
+      context: ./graphhopper
+    entrypoint: ["/run.sh"]
     volumes:
       - ./data:/data
-      - ./graphhopper-config.yml:/app/graphhopper/config.yml
+      - ./graphhopper/config.yml:/app/graphhopper/config.yml
     ports:
       - "8989:8989"
 
   photon:
-    build: .
-    entrypoint: ["/scripts/run-photon.sh"]
+    build:
+      context: ./photon
+    entrypoint: ["/run.sh"]
     environment:
       - PHOTON_DB=${PHOTON_DB}
     volumes:
@@ -42,10 +45,11 @@ services:
       - "2322:2322"
 
   geocoder-converter:
-    build: .
-    entrypoint: ["/scripts/run-geocoder-converter.sh"]
+    build:
+      context: ./geocoder-converter
+    entrypoint: ["/run.sh"]
     volumes:
-      - ./geocoder-converter-config.yml:/app/geocoder-converter/config.yml
+      - ./geocoder-converter/config.yml:/app/geocoder-converter/config.yml
     ports:
       - "8080:8080"
     depends_on:
