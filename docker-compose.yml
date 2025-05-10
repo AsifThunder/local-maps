@@ -51,7 +51,7 @@ services:
   geocoder-converter:
     build:
       context: ./geocoder-converter
-    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh photon starting && /run.sh"]
+    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh photon finished && /run.sh"]
     volumes:
       - ./wait_for.sh:/wait_for.sh:ro
       - ./data:/data # for status files
@@ -63,7 +63,7 @@ services:
   ui:
     build:
       context: ./ui
-    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh planetiler starting && npm run serve"]
+    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh planetiler finished && npm run serve"]
     volumes:
       - ./wait_for.sh:/wait_for.sh
       - ./data:/data # for status files
