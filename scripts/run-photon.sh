@@ -26,4 +26,4 @@ fi
 # Run photon with extracted DB
 echo "===> Starting Photon..."
 cd /app/photon
-java -Xmx2g -jar photon.jar -data-dir /data
+java -Xmx2g -jar photon.jar -data-dir /data -listen-ip 0.0.0.0

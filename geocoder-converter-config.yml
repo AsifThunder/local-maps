@@ -1,0 +1,24 @@
+# photonURL: https://photon.komoot.io/api/
+# photonReverseURL: https://photon.komoot.io/reverse/
+photonURL: http://photon:2322/api/
+# photonURL: http://localhost:2322/api/
+photonReverseURL: http://photon:2322/reverse/
+photon: true
+
+withCORS: true
+
+# e.g. to restrict for local access
+# ipWhiteList:"localhost,127.0.0.1"
+ipWhiteList: ""
+
+server:
+  applicationConnectors:
+  - type: http
+    port: 8080
+  requestLog:
+      appenders: []
+  adminConnectors:
+  - type: http
+    port: 8081
+    # for security reasons bind to localhost
+    bindHost: localhost

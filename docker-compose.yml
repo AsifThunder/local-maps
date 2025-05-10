@@ -22,8 +22,6 @@ services:
   graphhopper:
     build: .
     entrypoint: ["/scripts/run-graphhopper.sh"]
-    environment:
-      - PBF_URL=${PBF_URL}
     volumes:
       - ./data:/data
       - ./graphhopper-config.yml:/app/graphhopper/config.yml
@@ -37,8 +35,21 @@ services:
       - PHOTON_DB=${PHOTON_DB}
     volumes:
       - ./data:/data
+    # expose to other services like geocoder-converter
+    expose:
+      - "2322"
     ports:
       - "2322:2322"
+
+  geocoder-converter:
+    build: .
+    entrypoint: ["/scripts/run-geocoder-converter.sh"]
+    volumes:
+      - ./geocoder-converter-config.yml:/app/geocoder-converter/config.yml
+    ports:
+      - "8080:8080"
+    depends_on:
+      - photon
 
 networks:
   default:
