@@ -17,6 +17,8 @@ is from [photon](https://github.com/komoot/photon/) and the tiles are created by
  * alternative routes
  * with minor tweak navigation in maps possible
 
+[![GraphHopper Maps](./dev/screenshot.png)](https://graphhopper.com/maps)
+
 # Installation
 
 1. edit .env and use the data you want or just start with the default (Austria)
