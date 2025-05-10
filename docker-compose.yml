@@ -51,7 +51,7 @@ services:
   geocoder-converter:
     build:
       context: ./geocoder-converter
-    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh photon finished && /run.sh"]
+    entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh photon starting && /run.sh"]
     volumes:
       - ./wait_for.sh:/wait_for.sh:ro
       - ./data:/data # for status files
