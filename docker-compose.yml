@@ -60,9 +60,9 @@ services:
     depends_on:
       - photon
   
-  maps:
+  ui:
     build:
-      context: ./maps
+      context: ./ui
     entrypoint: ["/bin/sh", "-c", "sh /wait_for.sh planetiler starting && npm run serve"]
     volumes:
       - ./wait_for.sh:/wait_for.sh
