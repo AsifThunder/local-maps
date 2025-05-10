@@ -21,11 +21,11 @@ graphhopper:
    - name: bike
      custom_model_files: [bike.json, bike_elevation.json]
 
-# TODO for now without CH to make import faster
-#  profiles_ch:
-#    - profile: car
-#    - profile: bike
-#    - profile: foot
+  # comment this out if you don't have enough memory
+  profiles_ch:
+    - profile: car
+    - profile: bike
+    - profile: foot
 
   prepare.ch.threads: 1
   
